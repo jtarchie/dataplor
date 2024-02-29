@@ -31,7 +31,7 @@ be run, such as `rails db:migrate,` to set up the tables used by models.
 Example API request:
 
 ```shell
-curl http://localhost:3000/birds?node_ids=[130]
+curl http://localhost:3000/birds?node_ids[]=130
 ```
 
 It fetches bird data related to the node with an ID of 130.
