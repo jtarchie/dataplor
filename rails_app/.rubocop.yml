@@ -17,3 +17,12 @@ Metrics/BlockLength:
 
 Style/Documentation:
   Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false

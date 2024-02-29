@@ -62,4 +62,21 @@ class Node < ApplicationRecord
       lowest: (left_ancestors & right_ancestors).first
     )
   end
+
+  def self.descendant_node_ids(node_ids)
+    sql_query = <<~SQL
+      WITH RECURSIVE descendant_nodes AS (
+        SELECT id, parent_id
+        FROM nodes
+        WHERE id IN (?)
+      UNION ALL
+        SELECT n.id, n.parent_id
+        FROM nodes n
+        JOIN descendant_nodes dn ON dn.id = n.parent_id
+      )
+      SELECT id FROM descendant_nodes
+    SQL
+
+    Node.find_by_sql([sql_query, node_ids]).pluck(:id)
+  end
 end

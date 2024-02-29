@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get '/common_ancestor' => 'common_ancestor#show'
+  get '/birds' => 'birds#index'
 end
